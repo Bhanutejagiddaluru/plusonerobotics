@@ -83,33 +83,33 @@ The digit classification model is trained using supervised learning on labeled g
 
 #### Model Compilation and Optimization
 
-The network is compiled using the **RMSprop optimizer**, which is well-suited for convolutional architectures due to its adaptive learning rate behavior and stable convergence characteristics. The optimizer is configured with a learning rate of **0.001**, momentum term (**ρ = 0.9**), and numerical stability constant (**ε = 1e−8**). Model performance during training is tracked using **classification accuracy** as the primary evaluation metric.
+The network is compiled using the **RMSprop optimizer**, which is suited for convolutional architectures due to its adaptive learning rate behavior and stable convergence characteristics. The optimizer is configured with a learning rate of **0.001**, momentum term (**ρ = 0.9**), and numerical stability constant (**ε = 1e−8**). Model performance during training is tracked using **classification accuracy** as the primary evaluation metric.
 
 #### Training Procedure
 
-Training is performed over **30 epochs** using mini-batch gradient descent with a **batch size of 32**. To improve generalization and reduce overfitting, **data augmentation** is applied via an `ImageDataGenerator`, which dynamically produces augmented training samples through geometric and intensity-based transformations. Each epoch consists of **200 training steps**, with validation performance evaluated on a held-out dataset at the end of every epoch.
+Training is performed over **30 epochs** using mini-batch gradient descent with a **batch size of 32**. To improve generalization and reduce overfitting, **data augmentation** is applied via an ImageDataGenerator, Each epoch consists of **200 training steps**, with validation performance evaluated on a held-out dataset at the end of every epoch.
 
 #### Evaluation and Model Validation
 
-After training, the model is evaluated on an independent test dataset to assess its generalization performance. The evaluation reports both the final loss value and classification accuracy, providing a quantitative measure of the network’s robustness prior to deployment in the downstream Sudoku grid reconstruction and digit inference pipeline.
+After training, the model is evaluated on an independent test dataset to assess its performance. The evaluation reports both the final loss value and classification accuracy, providing a quantitative measure of the network’s robustness prior to deployment in the downstream Sudoku grid reconstruction and digit inference pipeline.
 
 ---
 
 ## Part 2: Sudoku Grid Detection and Perspective Normalization
 
-This stage implements a **classical computer vision–based perception pipeline** to localize, extract, and geometrically normalize the Sudoku board from an input image prior to digit recognition.
+This stage implements a **computer vision–based perception pipeline** to localize, extract, and geometrically normalize the Sudoku board from an input image prior to digit recognition.
 
 ### 1. Input Selection and Standardization
 
-A Sudoku image is randomly sampled from the dataset to simulate real-world variability in board appearance. The selected image is resized to a fixed spatial resolution of **450 × 450 pixels**, ensuring consistent downstream processing and simplifying geometric transformations.
+A Sudoku image is randomly sampled from the dataset. The selected image is resized to a fixed spatial resolution of **450 × 450 pixels**
 
 ### 2. Image Preprocessing and Binarization
 
-The input image undergoes a structured preprocessing pipeline to enhance grid visibility and suppress noise:
+The input image undergoes a structured preprocessing pipeline to enhance grid visibility and reduce noise:
 
 - The image is converted to **grayscale**, reducing dimensionality while preserving structural information.  
 - **Gaussian blurring** is applied to attenuate high-frequency noise and improve threshold stability.  
-- **Adaptive thresholding** is used to generate a binary representation of the image, enabling robust separation of grid lines and digits under varying illumination conditions.  
+- **Adaptive thresholding** is used to generate a binary representation of the image, enabling separation of grid lines and digits under varying illumination conditions.  
 
 This preprocessing stage produces a high-contrast binary image suitable for contour-based analysis.
 
