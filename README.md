@@ -24,36 +24,16 @@ Detected digits are mapped into a structured 9×9 grid representation correspond
 
 ---
 
-# Dataset information
-
-Kaggle: Sudoku Box Detection
-[link text](https://www.kaggle.com/datasets/macfooty/sudoku-box-detection)
-* Augmented - Sudoku dataset images.
-* 2620 JPEG-Type Images
-* 600 x 600 shape
-
-
-Kaggle: Digits
-[link text](https://www.kaggle.com/datasets/karnikakapoor/digits)
-
-* Digits from the Chars74K image dataset
-* It contains digits from 0 to 9
-* 1016 PNG-type images for each digit
-* 128 X 128 shape
-
-
-
 ## STEP 1: Detailed Breakdown – Digit Classification Pipeline
 
 ### 1. Environment Setup and Data Mounting
 
-The notebook is executed in a cloud-based runtime environment where **Google Drive is mounted** to provide persistent access to training and evaluation datasets. This approach enables scalable experimentation and avoids repeated dataset uploads during iterative development.
+The notebook is executed within a cloud-based runtime environment, using Google Collab. Where Google Drive is mounted as a persistent storage backend.
 
-Image datasets are accessed directly from the mounted drive, ensuring reproducibility and efficient I/O operations during training.
 
 ### 2. Dataset Overview
 
-Two publicly available Kaggle datasets are used to support the learning and evaluation stages of the pipeline.
+Two publicly available datasets sourced from Kaggle are utilized to support both the learning and perception components of the pipeline.
 
 | Dataset Name | Source | Purpose | Image Count | Image Type | Resolution |
 |-------------|--------|---------|-------------|------------|------------|
@@ -62,6 +42,8 @@ Two publicly available Kaggle datasets are used to support the learning and eval
 
 - **Sudoku Box Detection Dataset**: https://www.kaggle.com/datasets/macfooty/sudoku-box-detection  
 - **Digits Dataset (Chars74K)**: https://www.kaggle.com/datasets/karnikakapoor/digits
+
+
 
 ### 3. Data Preprocessing
 
