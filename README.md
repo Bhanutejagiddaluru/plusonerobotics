@@ -60,9 +60,6 @@ The CNN architecture is designed to progressively learn hierarchical representat
 
 <img width="2140" height="741" alt="image" src="https://github.com/user-attachments/assets/7ad098e8-f1c6-44a3-b4cb-0671d52d7fe6" />
 
-
-### 4. CNN Architecture and Feature Learning
-
 The digit classification model is implemented as a feedforward convolutional neural network using the **TensorFlow Keras Sequential API**. The architecture is explicitly designed to perform progressive spatial feature extraction followed by dense classification, operating on fixed-resolution grayscale image tensors of shape **32 × 32 × 1**.
 
 #### Feature Extraction Stage
