@@ -28,7 +28,7 @@ Detected digits are mapped into a structured 9×9 grid representation correspond
 
 ### 1. Environment Setup and Data Mounting
 
-The notebook is executed within a cloud-based runtime environment, using Google Collab. Where Google Drive is mounted as a persistent storage backend.
+The notebook is executed within a cloud-based runtime environment, using Google Collab. Where Google Drive is mounted for storage.
 
 
 ### 2. Dataset Overview
@@ -64,25 +64,15 @@ The digit classification model is implemented as a feedforward convolutional neu
 
 #### Feature Extraction Stage
 
-The network begins with two stacked convolutional layers, each applying **60 learnable kernels of size 5 × 5** with *same* padding. These layers operate over localized receptive fields to capture low-level spatial features such as edges, corners, and intensity gradients, while increasing the representational capacity of the early feature maps.
-
-A **2 × 2 max pooling layer** follows, performing spatial downsampling to reduce feature map resolution while preserving dominant activations and improving computational efficiency.
-
-The next stage consists of two convolutional layers with **30 kernels of size 3 × 3**, which integrate previously extracted features to learn mid-level abstractions, including digit strokes, contours, and structural compositions.
-
-A second **2 × 2 max pooling layer** further reduces spatial dimensionality and introduces translation invariance, enabling the model to generalize across spatial variations in digit placement.
-
-#### Regularization and Classification
-
-**Dropout layers** are strategically applied after the convolutional stack and within the dense layers to mitigate overfitting by randomly deactivating neurons during training.
-
-The resulting feature maps are flattened into a one-dimensional feature vector, which serves as input to the classification stage.
+The network begins with two convolutional layers, each applying **60 learnable kernels of size 5 × 5** with *same* padding. These capture low-level spatial features such as edges, corners, and intensity gradients. Then **max pooling layer** for downsampling to reduce feature map resolution, the next stage consists of two convolutional layers with **30 kernels of size 3 × 3**, which integrate previously extracted features to learn mid-level abstractions, including digit strokes, contours, and structural compositions, then second **max pooling layer** reduces dimensionality and then followed by  **Dropout layers**, and flatten layer where resulting feature maps into a one-dimensional feature vector, which serves as input to the classification stage.
 
 A fully connected **dense layer with 500 neurons** projects the extracted features into a higher-dimensional latent space, allowing the network to learn complex, non-linear decision boundaries.
 
 The final **softmax output layer** consists of **10 neurons**, corresponding to digit classes (0–9), producing a normalized probability distribution for multi-class classification.
 
 <img width="2030" height="1509" alt="image" src="https://github.com/user-attachments/assets/94e9a90c-65da-4892-8573-409fe286bf59" />
+
+### The CNN model
 
 <img width="760" height="580" alt="image" src="https://github.com/user-attachments/assets/8a407e10-0828-48b9-ac05-77af99979133" />
 
